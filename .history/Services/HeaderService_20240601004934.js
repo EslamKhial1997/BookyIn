@@ -6,7 +6,7 @@ const { UploadMultiImage } = require("../Middleware/UploadImageMiddleware");
 const { v4: uuidv4 } = require("uuid");
 
 exports.resizeImage = expressAsyncHandler(async (req, res, next) => {
-  if (req.files.image) {
+  if (req.files.image) { 
     const filename = `image-${uuidv4()}-${Date.now()}.png`;
     await sharp(req.files.image[0].buffer)
       .resize(1500, 1500)
@@ -40,8 +40,9 @@ exports.deleteOneHeaderService = factory.deleteOne(headerModel);
 exports.updateOneHeaderService = expressAsyncHandler(async (req, res, next) => {
   const header = await headerModel.findByIdAndUpdate(
     req.params.id,
-
-    req.body,
+    
+      req.body
+    ,
     {
       new: true,
     }
@@ -49,6 +50,7 @@ exports.updateOneHeaderService = expressAsyncHandler(async (req, res, next) => {
   if (!header) {
     return next(new ApiError(`Header ${req.params.id} Not Found`));
   }
-  await header.save();
+
   res.status(200).json({ data: header });
 });
+

@@ -17,7 +17,7 @@ Routes.route("/")
   .get( getAllHeaderService);
 Routes.route("/:id")
   .get(getHeaderByIdValidator,getOneHeaderService)
-  .put(updateHeaderValidation,updateOneHeaderService)
+  .put(updateOneHeaderService)
   .delete(deleteHeaderByIdValidator,deleteOneHeaderService);
 
 module.exports = Routes;

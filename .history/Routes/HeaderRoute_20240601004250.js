@@ -8,7 +8,7 @@ const {
   UploadImageService,
   resizeImage,
 } = require("../Services/HeaderService");
-const { createHeaderValidator, getHeaderByIdValidator, updateHeaderValidation, deleteHeaderByIdValidator } = require("../Resuble/HeaderValidation");
+const { createHeaderValidator, getHeaderByIdValidator } = require("../Resuble/HeaderValidation");
 
 const Routes = Router({ mergeParams: true });
 
@@ -17,7 +17,7 @@ Routes.route("/")
   .get( getAllHeaderService);
 Routes.route("/:id")
   .get(getHeaderByIdValidator,getOneHeaderService)
-  .put(updateHeaderValidation,updateOneHeaderService)
-  .delete(deleteHeaderByIdValidator,deleteOneHeaderService);
+  .put(updatehe,updateOneHeaderService)
+  .delete(deleteOneHeaderService);
 
 module.exports = Routes;

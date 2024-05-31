@@ -49,6 +49,6 @@ exports.updateOneHeaderService = expressAsyncHandler(async (req, res, next) => {
   if (!header) {
     return next(new ApiError(`Header ${req.params.id} Not Found`));
   }
-  await header.save();
+
   res.status(200).json({ data: header });
 });

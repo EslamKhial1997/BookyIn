@@ -38,6 +38,7 @@ exports.getOneHeaderService = factory.getOne(headerModel);
 exports.deleteOneHeaderService = factory.deleteOne(headerModel);
 // exports.updateOneHeaderService = factory.updateOne(headerModel);
 exports.updateOneHeaderService = expressAsyncHandler(async (req, res, next) => {
+  console.log(req.body);
   const header = await headerModel.findByIdAndUpdate(
     req.params.id,
 
@@ -49,6 +50,6 @@ exports.updateOneHeaderService = expressAsyncHandler(async (req, res, next) => {
   if (!header) {
     return next(new ApiError(`Header ${req.params.id} Not Found`));
   }
-  await header.save();
+
   res.status(200).json({ data: header });
 });

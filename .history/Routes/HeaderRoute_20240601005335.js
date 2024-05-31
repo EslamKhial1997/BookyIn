@@ -10,14 +10,14 @@ const {
 } = require("../Services/HeaderService");
 const { createHeaderValidator, getHeaderByIdValidator, updateHeaderValidation, deleteHeaderByIdValidator } = require("../Resuble/HeaderValidation");
 
-const Routes = Router({ mergeParams: true });
+const Routes = Router();
 
 Routes.route("/")
   .post(UploadImageService ,resizeImage,createHeaderValidator, createHeaderService)
   .get( getAllHeaderService);
 Routes.route("/:id")
   .get(getHeaderByIdValidator,getOneHeaderService)
-  .put(updateHeaderValidation,updateOneHeaderService)
+  .put(updateOneHeaderService)
   .delete(deleteHeaderByIdValidator,deleteOneHeaderService);
 
 module.exports = Routes;
