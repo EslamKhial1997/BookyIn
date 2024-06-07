@@ -15,7 +15,7 @@
     "uuid": "^9.0.1"
   },
   "scripts": {
-    "start:dev": "nodemon bookyinServerLandingPage.js",
+    // "start:dev": "nodemon bookyinServerLandingPage.js",
     "start": "node bookyinServerLandingPage.js"
   },
   "devDependencies": {

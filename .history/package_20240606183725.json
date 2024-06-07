@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start:dev": "nodemon bookyinServerLandingPage.js",
-    "start": "node bookyinServerLandingPage.js"
+    "start": "node server.js"
   },
   "devDependencies": {
     "nodemon": "^3.1.0"

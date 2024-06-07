@@ -6,9 +6,9 @@ const { UploadMultiImage } = require("../Middleware/UploadImageMiddleware");
 const { v4: uuidv4 } = require("uuid");
 
 exports.resizeImage = expressAsyncHandler(async (req, res, next) => {
-
+  console.log(req.files);
   if (req.files.image) {
-    const filename = `image-${uuidv4()}-${Date.now()}.png`;
+    const filename = `image-${uuidv4()}-${Date.now()}.gif`;
     await sharp(req.files.image[0].buffer)
       .resize(1500, 1500)
       .toFormat("jpeg")
@@ -17,7 +17,7 @@ exports.resizeImage = expressAsyncHandler(async (req, res, next) => {
     req.body.image = filename;
   }
   if (req.files.logo) {
-    const filename = `logo-${uuidv4()}-${Date.now()}.png`;
+    const filename = `logo-${uuidv4()}-${Date.now()}.gif`;
     await sharp(req.files.logo[0].buffer)
       .resize(1500, 1500)
       .toFormat("jpeg")

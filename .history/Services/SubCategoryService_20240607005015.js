@@ -7,10 +7,11 @@ const { UploadSingleImage } = require("../Middleware/UploadImageMiddleware");
 
 exports.resizeImage = expressAsyncHandler(async (req, res, next) => {
   if (req.file) {
-    const filename = `subcategory-${uuidv4()}-${Date.now()}.jpeg`;
+   
+    const filename = `subcategory-${uuidv4()}-${Date.now()}.jpg`;
     await sharp(req.file.buffer)
       .resize(500, 500)
-      .toFormat("jpeg")
+      .toFormat("jpg")
       .jpeg({ quality: 50 })
       .toFile(`uploads/subcategory/${filename}`);
     req.body.image = filename;
@@ -23,19 +24,19 @@ exports.createSubCategoryOnCategory = (req, res, next) => {
   if (!req.body.category) req.body.category = req.params.categoryId;
   next();
 };
-exports.createSubCategoryService = factory.createOne(SubCategoryModel);
+ exports.createSubCategoryService = factory.createOne(SubCategoryModel);
 exports.getAllSubCategoryService = factory.getAll(SubCategoryModel);
-exports.getOneSubCategoryService = expressAsyncHandler(
-  async (req, res, next) => {
-    const docs = await SubCategoryModel.find({ category: req.params.id });
-    console.log(req.params.id);
-    if (!docs) {
-      return next(
-        new ApiError(`Sorry Found Data From ID :${req.params.id}`, 404)
-      );
-    }
-    res.status(200).json({ status: "Success", data: docs });
+exports.getOneSubCategoryService = expressAsyncHandler(async(req , res , next)=>{
+  const docs = await SubCategoryModel.find({category: req.params.id})
+  if (!docs) {
+    return next(
+      new ApiError(
+        `Sorry Found Data From ID :${req.params.id}`,
+        404
+      )
+    );
   }
-);
+  res.status(200).json({ status:"Success",data: docs });
+  })
 exports.updateSubCategoryService = factory.updateOne(SubCategoryModel);
 exports.deleteSubCategoryService = factory.deleteOne(SubCategoryModel);

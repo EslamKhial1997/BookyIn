@@ -28,7 +28,7 @@ exports.getAllSubCategoryService = factory.getAll(SubCategoryModel);
 exports.getOneSubCategoryService = expressAsyncHandler(
   async (req, res, next) => {
     const docs = await SubCategoryModel.find({ category: req.params.id });
-    console.log(req.params.id);
+    console.log(docs);
     if (!docs) {
       return next(
         new ApiError(`Sorry Found Data From ID :${req.params.id}`, 404)
