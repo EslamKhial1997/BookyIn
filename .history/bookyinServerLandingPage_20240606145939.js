@@ -32,7 +32,6 @@ const server = app.listen(PORT, () => {
 
 
 app.use(express.static(path.join(__dirname, "uploads/")));
-app.use(express.static(path.join(__dirname, "build/index.html")));
 
 app.use("/api/v1/subcategory", SubCategoryRoutes);
 app.use("/api/v1/category", CategoryRoutes);
